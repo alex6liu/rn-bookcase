@@ -2,39 +2,67 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import ScanScreen from '../screens/ScanScreen';
+import AnalyzeScreen from '../screens/AnalyzeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+
+import { Ionicons, AntDesign } from '@expo/vector-icons';
+import Colors from '../constants/Colors';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: '我的藏书',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
+    <Ionicons
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+        ? 'ios-stats'
+        : 'md-stats'
       }
+      size={26}
+      style={{ marginBottom: -3 }}
+      color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
     />
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const ScanStack = createStackNavigator({
+  Scan: ScanScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+ScanStack.navigationOptions = {
+  tabBarLabel: '扫码藏书',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+    <Ionicons
+      name={
+        Platform.OS === 'ios'
+        ? 'ios-qr-scanner'
+        : 'md-qr-scanner'
+      }
+      size={26}
+      style={{ marginBottom: -3 }}
+      color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+    />
+  ),
+};
+
+const AnalyzeStack = createStackNavigator({
+  Analyze: AnalyzeScreen,
+});
+
+AnalyzeStack.navigationOptions = {
+  tabBarLabel: '分析',
+  tabBarIcon: ({ focused }) => (
+    <AntDesign
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name="linechart"
+      size={26}
+      style={{ marginBottom: -3 }}
+      color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
     />
   ),
 };
@@ -44,17 +72,21 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: '设置',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
+    <AntDesign
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name='setting'
+      size={26}
+      style={{ marginBottom: -3 }}
+      color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
     />
   ),
 };
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  ScanStack,
+  AnalyzeStack,
   SettingsStack,
 });

@@ -1,6 +1,6 @@
 # 私家书藏
 
-仿照[私家书藏app](https://github.com/magaofei/bookCollection), 用react-native进行编写
+仿照[私家书藏app](https://github.com/magaofei/bookCollection)的ios客户端, 用react-native进行编写
 
 通过豆瓣书籍的api的ISBN查询,获得书籍的所有信息. 并存储.
 
@@ -9,9 +9,9 @@
 ## 主要页面及功能
 
 - Home Page
-  - 搜索
-  - 批量操作
-  - 书架
+  - [ ]搜索
+  - [ ] 批量操作
+  - [ ] 书架
 - Add books
   - [ ] 手动输入ISBN
   - [ ] 从摄像头获取ISBN
@@ -21,14 +21,14 @@
       - [ ] 功能3: 放弃
   - [ ] 手动加书
 - Analyze page
-  - 当前藏书
-  - 最爱作者
-  - 出版社
-  - 常用标签
-  - 书柜管理
-  - 借出管理
-  - 阅读进度
-  - 购买渠道
+  - [ ] 当前藏书
+  - [ ] 最爱作者
+  - [ ] 出版社
+  - [ ] 常用标签
+  - [ ] 书柜管理
+  - [ ] 借出管理
+  - [ ] 阅读进度
+  - [ ] 购买渠道
 - Setting page
   - 藏书设置
     - 基础设置
