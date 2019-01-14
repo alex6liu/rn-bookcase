@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import HomeScreen from '../screens/HomeScreen';
@@ -46,6 +46,17 @@ ScanStack.navigationOptions = {
       size={26}
       style={{ marginBottom: -3 }}
       color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+      onPress={()=>Alert.alert(
+        '',
+        '录入书籍',
+        [
+          {text: '扫码藏书', onPress: () => console.log('Ask me later pressed')},
+          {text: '搜索书籍', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+          {text: '手动录入', onPress: () => console.log('OK Pressed')},
+          {text: '取消', onPress: () => console.log('OK Pressed'), style: 'cancel'},
+        ],
+        { cancelable: true }
+      )}
     />
   ),
 };
