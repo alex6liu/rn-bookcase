@@ -23,7 +23,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View>
-        <Header title="我的收藏"/>
+        <Header title="我的藏书"/>
         <Button title="hey"/>
       </View>
     );
