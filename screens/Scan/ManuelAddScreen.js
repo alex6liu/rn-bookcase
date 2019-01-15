@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text, TextInput, Image, ScrollView } from 'react-native';
-import { Input, ThemeProvider } from 'react-native-elements';
-import {ManuelSingleInfo} from '../components/ManuelSingleInfo';
+import {ManuelSingleInfo} from '../../components/ManuelSingleInfo';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {

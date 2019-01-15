@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TextInput, Image, ScrollView } from 'react-native';
 import axios from 'axios';
-import bookApi from '../api';
+import bookApi from '../../api';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {
