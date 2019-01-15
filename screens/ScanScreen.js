@@ -26,7 +26,7 @@ export default class ScanScreen extends React.Component {
         <View style={styles.operations}>
           <Button title='扫码录入'/>
           <Button title='搜索书籍' onPress={() => this.props.navigation.navigate('Search')}/>
-          <Button title='手动录入'/>
+          <Button title='手动录入' onPress={() => this.props.navigation.navigate('ManuelAdd')}/>
         </View>
       </View>
     );
