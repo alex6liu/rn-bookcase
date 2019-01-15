@@ -1,27 +1,43 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import { Button } from 'react-native-elements';
+
+import Header from '../components/Header';
+import bookApi from '../api';
 
 export default class ScanScreen extends React.Component {
   static navigationOptions = {
-    title: 'Scan',
+    header: null,
   };
 
+  constructor() {
+    super();
+    this.state = {
+      
+    };
+  }
+
   render() {
+
     return (
-      <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <ExpoLinksView />
-      </ScrollView>
+      <View style={styles.scanContainer}>
+        <Header title="扫码" />
+        <View style={styles.operations}>
+          <Button title='扫码录入'/>
+          <Button title='搜索书籍' onPress={() => this.props.navigation.navigate('Search')}/>
+          <Button title='手动录入'/>
+        </View>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+  scanContainer: {},
+  operations: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
