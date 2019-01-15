@@ -2,9 +2,9 @@ import React from 'react';
 import { createSwitchNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
-import SearchScreen from '../screens/SearchScreen';
-import CameraScreen from '../screens/CameraScreen';
-import ManuelAddScreen from '../screens/ManuelAddScreen';
+import SearchScreen from '../screens/Scan/SearchScreen';
+import CameraScreen from '../screens/Scan/CameraScreen';
+import ManuelAddScreen from '../screens/Scan/ManuelAddScreen';
 
 export default createSwitchNavigator({
   // You could add another route here for authentication.

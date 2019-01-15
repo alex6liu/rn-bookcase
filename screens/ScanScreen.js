@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
 import { Button } from 'react-native-elements';
 
 import Header from '../components/Header';

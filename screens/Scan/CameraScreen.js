@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, Platform } from 'react-native';
 import axios from 'axios';
-import { Camera, Permissions, BarCodeScanner } from 'expo';
+import { Permissions, BarCodeScanner } from 'expo';
 import bookApi from '../api';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
