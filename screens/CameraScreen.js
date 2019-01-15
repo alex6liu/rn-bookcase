@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Platform } from 'react-native';
 import axios from 'axios';
-import { Camera, Permissions } from 'expo';
+import { Camera, Permissions, BarCodeScanner } from 'expo';
+import bookApi from '../api';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default class CameraScreen extends React.Component {
   static navigationOptions = {
@@ -13,7 +15,26 @@ export default class CameraScreen extends React.Component {
     this.state = {
       keyword: '',
       resArr: [],
+      hasCameraPermission: null,
     };
+  }
+
+  async componentDidMount() {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({ hasCameraPermission: status === 'granted' });
+  }
+
+  handleBarCodeScanned = ({ type, data }) => {
+    this.setState({keyword: data});
+    // axios.get(bookApi+this.state.keyword)
+    //   .then(res => res.data.books[0])
+    //   .then(res => ({
+    //     name: res.title,
+    //     cover: res.image,
+    //     author: res.author,
+    //     tags: res.tags.map(e => e.title)
+    //   }))
+    //   .then(res => )
   }
 
   render() {
@@ -39,26 +60,57 @@ export default class CameraScreen extends React.Component {
         .then(res => this.setState({resArr: res}))
     }
 
-    
-    return (
-      <View style={styles.cameraContainer}>
-        <View style={styles.cameraHeader}>
-          <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.navigate('Scan')}>取消</Text>
-          <Text style={styles.searchHeaderText}>搜索</Text>
-          <Text>    </Text>
+    const { hasCameraPermission } = this.state;
+    if (hasCameraPermission === null) {
+      return <View />;
+    } else if (hasCameraPermission === false) {
+      return <Text>No access to camera</Text>;
+    } else {
+      return (
+        <View style={styles.scannerContainer}>
+          <View style={styles.scannerHeaderContainer}>
+            <Ionicons
+              onPress={()=>this.props.navigation.navigate('Scan')}
+              name={
+                Platform.OS === 'ios'
+                ? "ios-arrow-back"
+                : 'md-arrow-back'
+              }
+              size={32}
+              color="green"
+            />
+            <MaterialCommunityIcons
+              onPress={()=>this.props.navigation.navigate('Scan')}
+              name="flash"
+              size={32}
+              color="green"
+            />
+          </View>
+          <BarCodeScanner
+            onBarCodeScanned={this.handleBarCodeScanned}
+            style={styles.barCodeScanner}
+          />
         </View>
-      </View>
-    );
+      );
+    }
   }
 }
 
 const styles = StyleSheet.create({
-  cameraContainer: {
-
+  scannerContainer: {
+    height: 600,
+    width: 400,
+    paddingTop: 60, 
   },
-  cameraHeader: {
+  scannerHeaderContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: 60,
+    marginLeft: 10,
+    marginRight: 30,
   },
+  barCodeScanner: {
+    marginLeft: 50,
+    height: 250,
+    width: 250,
+  }
 });
