@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity, Platform } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Platform, Alert } from 'react-native';
 import axios from 'axios';
 import { Permissions, BarCodeScanner } from 'expo';
 import bookApi from '../../api';
@@ -26,15 +26,23 @@ export default class CameraScreen extends React.Component {
 
   handleBarCodeScanned = ({ type, data }) => {
     this.setState({keyword: data});
-    // axios.get(bookApi+this.state.keyword)
-    //   .then(res => res.data.books[0])
-    //   .then(res => ({
-    //     name: res.title,
-    //     cover: res.image,
-    //     author: res.author,
-    //     tags: res.tags.map(e => e.title)
-    //   }))
-    //   .then(res => )
+    axios.get(bookApi+this.state.keyword)
+      .then(res => res.data.books[0])
+      .then(res => ({
+        name: res.title,
+        isbn: res.isbn13,
+        author: res.author,
+      }))
+      .then(res => Alert.alert(
+        '提示',
+        res.name + ' ' + res.isbn + ' ' + res.author,
+        [
+          {text: '查看详情', onPress: () => console.log('Ask me later pressed')},
+          {text: '收藏并继续扫描', onPress: () => console.log('OK Pressed')},
+          {text: '晚点再说', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        ],
+        { cancelable: false }
+      ))
   }
 
   render() {
