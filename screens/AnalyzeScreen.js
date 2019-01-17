@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { Icon } from "expo";
+import Header1 from '../components/Header1';
 
 export default class AnalyzeScreen extends React.Component {
   static navigationOptions = {
@@ -10,9 +11,7 @@ export default class AnalyzeScreen extends React.Component {
   render() {
     return (
       <View>
-        <View style={{backgroundColor: 'green', paddingTop: 60, flexDirection: 'column', alignItems: 'center'}}>
-          <Text style={{color: 'white', fontSize: 20}}>分析</Text>
-        </View>
+        <Header1 title="分析"/>
         <View style={{flexDirection: 'column', alignItems: 'center', height: 100, justifyContent: 'center'}}>
           <Text style={{fontSize:15}}>当前藏书</Text>
           <Text style={{fontSize: 25}}>1</Text>
