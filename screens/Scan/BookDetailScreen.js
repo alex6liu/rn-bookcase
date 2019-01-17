@@ -13,7 +13,7 @@ export default class BookDetailScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      
+      title: '收藏',
     };
   }
 
@@ -71,8 +71,8 @@ export default class BookDetailScreen extends React.Component {
             <Text style={{color: 'white', fontSize: 13}}>ISBN: {this.state.isbn}</Text>
             {
               fromPage === 'home'
-              ? <Button title="已收藏" disabled={true} buttonStyle={{width: 80, height: 40}} onPress={() => console.log('1')}></Button>
-              : <Button title="收藏" buttonStyle={{backgroundColor: 'green', width: 80, height: 40}} onPress={() => console.log('1')}></Button>
+              ? <Button title="已收藏" buttonStyle={{width: 80, height: 40,backgroundColor: 'white'}} titleStyle={{color: 'grey'}} onPress={() => console.log('1')}></Button>
+              : <Button title={this.state.title} buttonStyle={{backgroundColor: 'green', width: 80, height: 40}} onPress={() => console.log('1')}></Button>
             }
           </View>
         </View>
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'grey',
-    color: 'black',
     margin: 5,
   }
 });
