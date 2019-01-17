@@ -5,6 +5,7 @@ import MainTabNavigator from './MainTabNavigator';
 import SearchScreen from '../screens/Scan/SearchScreen';
 import CameraScreen from '../screens/Scan/CameraScreen';
 import ManuelAddScreen from '../screens/Scan/ManuelAddScreen';
+import BookDetailScreen from '../screens/Scan/BookDetailScreen';
 
 export default createSwitchNavigator({
   // You could add another route here for authentication.
@@ -13,4 +14,5 @@ export default createSwitchNavigator({
   Search: SearchScreen,
   Camera: CameraScreen,
   ManuelAdd: ManuelAddScreen,
+  BookDetail: BookDetailScreen,
 });
