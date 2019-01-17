@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text, TextInput, Image, ScrollView, Button, Platform, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Image, ScrollView, Platform, TouchableHighlight } from 'react-native';
 import axios from 'axios';
 import bookApi from '../../api';
 import { Ionicons, EvilIcons } from '@expo/vector-icons';
+import {  Button } from 'react-native-elements';
 
 export default class BookDetailScreen extends React.Component {
   static navigationOptions = {
@@ -35,7 +36,8 @@ export default class BookDetailScreen extends React.Component {
   }
 
   render() {
-    
+    const { fromPage } = this.props.navigation.state.params;
+
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -67,9 +69,21 @@ export default class BookDetailScreen extends React.Component {
             <Text style={{color: 'white', fontSize: 13}}>出版年份: {this.state.pubdate}</Text>
             <Text style={{color: 'white', fontSize: 13}}>定价: {this.state.price}</Text>
             <Text style={{color: 'white', fontSize: 13}}>ISBN: {this.state.isbn}</Text>
-            <Button title="收藏" style={{color: 'green', width: 60, height: 40}} onPress={() => console.log('1')}></Button>
+            {
+              fromPage === 'home'
+              ? <Button title="已收藏" disabled={true} buttonStyle={{width: 80, height: 40}} onPress={() => console.log('1')}></Button>
+              : <Button title="收藏" buttonStyle={{backgroundColor: 'green', width: 80, height: 40}} onPress={() => console.log('1')}></Button>
+            }
           </View>
         </View>
+        {
+          fromPage === 'home'
+          ? (<View style={{height: 80, flexDirection: 'row', alignItems:'center', justifyContent: 'center'}}>
+              <Button title="设置阅读状态" onPress={() => console.log('1')} buttonStyle={styles.button}></Button>
+              <Button title="设置借出状态" onPress={() => console.log('1')} buttonStyle={styles.button}></Button>
+            </View>)
+          : null
+        }
         <View style={styles.summary}>
           <Text style={{fontSize: 18}}>内容简介</Text>
           <Text style={{fontSize: 15, color: 'grey'}}>{this.state.summary}</Text>
@@ -99,4 +113,9 @@ const styles = StyleSheet.create({
   summary: {
     padding: 10,
   },
+  button: {
+    backgroundColor: 'grey',
+    color: 'black',
+    margin: 5,
+  }
 });
