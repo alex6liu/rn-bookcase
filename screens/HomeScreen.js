@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-import { Button } from 'react-native-elements'
 
 import { MonoText } from '../components/StyledText';
 
@@ -24,7 +23,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View>
         <Header title="我的藏书"/>
-        <Button title="hey"/>
+
       </View>
     );
   }

@@ -4,7 +4,7 @@ import { ExpoLinksView } from '@expo/samples';
 
 export default class AnalyzeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Analyze',
+    header: null,
   };
 
   render() {

@@ -1,10 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
 import { Button } from 'react-native-elements';
 
 import Header from '../components/Header';
-import bookApi from '../api';
 
 export default class ScanScreen extends React.Component {
   static navigationOptions = {
@@ -24,7 +22,7 @@ export default class ScanScreen extends React.Component {
       <View style={styles.scanContainer}>
         <Header title="扫码" />
         <View style={styles.operations}>
-          <Button title='扫码录入'/>
+          <Button title='扫码录入' onPress={() => this.props.navigation.navigate('Camera')}/>
           <Button title='搜索书籍' onPress={() => this.props.navigation.navigate('Search')}/>
           <Button title='手动录入' onPress={() => this.props.navigation.navigate('ManuelAdd')}/>
         </View>

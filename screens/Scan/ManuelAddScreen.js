@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text, TextInput, Image, ScrollView } from 'react-native';
-import { Input, ThemeProvider } from 'react-native-elements';
-import {ManuelSingleInfo} from '../components/ManuelSingleInfo';
+import {ManuelSingleInfo} from '../../components/ManuelSingleInfo';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {
@@ -20,7 +19,7 @@ export default class SearchScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.navigate('Scan')}>取消</Text>
+          <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.goBack()}>取消</Text>
           <Text style={styles.searchHeaderText}>搜索</Text>
           <Text style={styles.searchHeaderText}>存储</Text>
         </View>
