@@ -39,7 +39,7 @@ export default class BookDetailScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('Search')}>
+          <TouchableHighlight onPress={() => this.props.navigation.goBack()}>
             <Ionicons
               name={
                 Platform.OS === 'ios'

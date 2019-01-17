@@ -19,7 +19,7 @@ export default class SearchScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.navigate('Scan')}>取消</Text>
+          <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.goBack()}>取消</Text>
           <Text style={styles.searchHeaderText}>搜索</Text>
           <Text style={styles.searchHeaderText}>存储</Text>
         </View>

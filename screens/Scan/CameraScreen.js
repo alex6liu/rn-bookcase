@@ -78,7 +78,7 @@ export default class CameraScreen extends React.Component {
         <View style={styles.scannerContainer}>
           <View style={styles.scannerHeaderContainer}>
             <Ionicons
-              onPress={()=>this.props.navigation.navigate('Scan')}
+              onPress={()=>this.props.navigation.goBack()}
               name={
                 Platform.OS === 'ios'
                 ? "ios-arrow-back"

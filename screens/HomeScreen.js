@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-import { Button } from 'react-native-elements'
 
 import { MonoText } from '../components/StyledText';
 

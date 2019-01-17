@@ -54,7 +54,7 @@ export default class SearchScreen extends React.Component {
     return (
       <View style={styles.searchContainer}>
         <View style={styles.searchHeader}>
-          <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.navigate('Scan')}>取消</Text>
+          <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.goBack()}>取消</Text>
           <Text style={styles.searchHeaderText}>搜索</Text>
           <Text>{'  '}</Text>
         </View>
@@ -78,7 +78,9 @@ export default class SearchScreen extends React.Component {
           showsVerticalScrollIndicator={true}
         >
           {
-            resContainer(this.state.resArr)
+            this.state.keyword
+            ? resContainer(this.state.resArr)
+            : null
           }
         </ScrollView>
       </View>
