@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Text, TextInput, Image, ScrollView } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Image, ScrollView,TouchableHighlight } from 'react-native';
 import axios from 'axios';
 import bookApi from '../../api';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {
-    title: 'Search',
+    header: null,
   };
 
   constructor() {
@@ -15,19 +15,16 @@ export default class SearchScreen extends React.Component {
       resArr: [],
     };
   }
-
+  
+  componentDidMount() {
+    
+  }
+  
   render() {
-    const searchBook = () => {
-      axios.get(bookApi+this.state.keyword)
-        .then(res => res.data.books)
-        .then(res => res.map(item => ({
-            name: item.title,
-            cover: item.image,
-            author: item.author,
-            tags: item.tags.map(e => e.title)
-          })
-        ))
-        .then(res => res.map(item => (
+
+    const resContainer = (resArr) => {
+      return resArr.map((item, index) => (
+        <TouchableHighlight onPress={() => this.props.navigation.navigate('BookDetail', {isbn: item.isbn})} key={index}>
           <View style={styles.singleResultContainer}>
             <Image source={{uri: item.cover}} style={styles.resultCover}/>
             <View style={styles.bookInfo}>
@@ -35,25 +32,42 @@ export default class SearchScreen extends React.Component {
               <Text style={styles.bookAuthor}>{item.author}</Text>
               <Text style={styles.bookTags}>{item.tags.slice(0,4).map(e => '#'+e+'  ')}</Text>
             </View>
-          </View>)))
-        .then(res => this.setState({resArr: res}))
+          </View>
+        </TouchableHighlight>
+      ))
     }
     
+    const searchBook = () => {
+      axios.get(bookApi+this.state.keyword)
+        .then(res => res.data.books)
+        .then(res => res.map(item => ({
+            name: item.title,
+            cover: item.image,
+            author: item.author,
+            tags: item.tags.map(e => e.title),
+            isbn: item.isbn13,
+          })
+        ))
+        .then(res => this.setState({resArr: res}))
+    }
     
     return (
       <View style={styles.searchContainer}>
         <View style={styles.searchHeader}>
           <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.navigate('Scan')}>取消</Text>
           <Text style={styles.searchHeaderText}>搜索</Text>
-          <Text>    </Text>
+          <Text>{'  '}</Text>
         </View>
         <TextInput
           style={styles.textInput}
           placeholder="Type here to search!"
           onChangeText={(keyword) => this.setState({keyword})}
-          autoFocus={true}
+          autoFocus={false}
           ref={"INPUT"}
-          onFocus={() => this.refs["INPUT"].focus()}
+          onFocus={() => {
+              this.refs["INPUT"].focus()
+            }
+          }
           blurOnSubmit={true}
           clearTextOnFocus={true}
           enablesReturnKeyAutomatically={true}
@@ -63,7 +77,9 @@ export default class SearchScreen extends React.Component {
           contentContainerStyle={styles.resultsContainer}
           showsVerticalScrollIndicator={true}
         >
-          {this.state.resArr}
+          {
+            resContainer(this.state.resArr)
+          }
         </ScrollView>
       </View>
     );
