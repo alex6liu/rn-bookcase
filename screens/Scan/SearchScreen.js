@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text, TextInput, Image, ScrollView,TouchableHighlight } from 'react-native';
 import axios from 'axios';
 import bookApi from '../../api';
+import createDataList from '../../utils/createDataList';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {
@@ -21,21 +22,6 @@ export default class SearchScreen extends React.Component {
   }
   
   render() {
-
-    const resContainer = (resArr) => {
-      return resArr.map((item, index) => (
-        <TouchableHighlight onPress={() => this.props.navigation.navigate('BookDetail', {isbn: item.isbn})} key={index}>
-          <View style={styles.singleResultContainer}>
-            <Image source={{uri: item.cover}} style={styles.resultCover}/>
-            <View style={styles.bookInfo}>
-              <Text style={styles.bookName}>{item.name}</Text>
-              <Text style={styles.bookAuthor}>{item.author}</Text>
-              <Text style={styles.bookTags}>{item.tags.slice(0,4).map(e => '#'+e+'  ')}</Text>
-            </View>
-          </View>
-        </TouchableHighlight>
-      ))
-    }
     
     const searchBook = () => {
       axios.get(bookApi+this.state.keyword)
@@ -79,7 +65,7 @@ export default class SearchScreen extends React.Component {
         >
           {
             this.state.keyword
-            ? resContainer(this.state.resArr)
+            ? createDataList(this.state.resArr, this.props)
             : null
           }
         </ScrollView>
@@ -112,30 +98,5 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 5,
     paddingVertical: 20,
-  },
-  singleResultContainer: {
-    flexDirection: 'row',
-    padding: 5,
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
-  },
-  resultCover: {
-    width: 40,
-    height: 60
-  },
-  bookInfo: {
-    flexDirection: 'column',
-    marginLeft: 10,
-  },
-  bookName: {
-    fontSize: 20,
-  },
-  bookAuthor: {
-    color: 'grey',
-    fontSize: 15,
-  },
-  bookTags: {
-    color: 'brown',
-    fontSize: 12,
   },
 });
