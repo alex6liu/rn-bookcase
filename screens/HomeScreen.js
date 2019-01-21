@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, Text, TextInput, Image, ScrollView,TouchableHighlight } from 'react-native';
+import {withNavigationFocus} from 'react-navigation';
 
 import Header from '../components/Header';
 import createDataList from '../utils/createDataList';
+import DeviceStorage from '../utils/DeviceStorage';
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -29,6 +31,32 @@ export default class HomeScreen extends React.Component {
       ],
     };
   }
+
+  componentDidMount() {
+
+    DeviceStorage.get('books').then(res => {
+      if (res) {
+        this.setState({
+          resArr: res
+        })
+      }
+    })
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.isFocused) {
+      DeviceStorage.get('books').then(res => {
+        if (res) {
+          this.setState({
+            resArr: res
+          })
+        }
+      })
+      return true;
+    } else {
+      return false
+    }
+  };
 
   render() {
     return (
@@ -56,3 +84,5 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
 });
+
+export default withNavigationFocus(HomeScreen);
