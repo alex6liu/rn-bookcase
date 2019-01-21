@@ -2,10 +2,42 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { Icon } from "expo";
 import Header1 from '../components/Header1';
+import DeviceStorage from '../utils/DeviceStorage';
+import {withNavigationFocus} from 'react-navigation';
 
-export default class AnalyzeScreen extends React.Component {
+class AnalyzeScreen extends React.Component {
   static navigationOptions = {
     header: null,
+  };
+
+  constructor() {
+    super();
+    this.state = {
+      count: 0
+    }
+  }
+
+  componentDidMount() {
+    DeviceStorage.get('books')
+      .then(res => {
+        this.setState({
+          count: res.length
+        })
+      })
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.isFocused) {
+      DeviceStorage.get('books')
+      .then(res => {
+        this.setState({
+          count: res.length
+        })
+      })
+      return true;
+    } else {
+      return false
+    }
   };
 
   render() {
@@ -14,7 +46,7 @@ export default class AnalyzeScreen extends React.Component {
         <Header1 title="分析"/>
         <View style={{flexDirection: 'column', alignItems: 'center', height: 100, justifyContent: 'center'}}>
           <Text style={{fontSize:15}}>当前藏书</Text>
-          <Text style={{fontSize: 25}}>1</Text>
+          <Text style={{fontSize: 25}}>{this.state.count}</Text>
         </View>
 
         <View style={{flexDirection: 'row', justifyContent:'space-around'}}>
@@ -80,3 +112,5 @@ const styles = StyleSheet.create({
     opacity: 0
   }
 });
+
+export default withNavigationFocus(AnalyzeScreen);
