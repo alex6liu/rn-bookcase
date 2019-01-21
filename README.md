@@ -14,7 +14,7 @@
 使用Expo自带的[BarCodeScanner](https://docs.expo.io/versions/latest/sdk/bar-code-scanner.md),
 
 ## Storage
-- [ ] AsyncStorage
+- [x] AsyncStorage
 - [ ] Mongo Altas
 
 ## Main Pages and Functions
@@ -25,6 +25,7 @@
   - [ ] 书架
 - [ ] Add books
   - [x] 搜索
+    - [x] 收藏加入书架 
   - [x] 从摄像头获取ISBN
     - [x] 从豆瓣api获得数据
       - [x] 功能1: 查看detail
