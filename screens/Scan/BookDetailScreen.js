@@ -17,6 +17,7 @@ export default class BookDetailScreen extends React.Component {
       title: '收藏',
       book: {},
       saved: [],
+      index: -1,
     };
   }
 
@@ -61,7 +62,7 @@ export default class BookDetailScreen extends React.Component {
   }
 
   render() {
-    const { fromPage } = this.props.navigation.state.params;
+    const { isbn } = this.props.navigation.state.params;
     
     const storeToLocal = () => {
       this.setState({
@@ -70,6 +71,21 @@ export default class BookDetailScreen extends React.Component {
       })
       DeviceStorage.save('books', this.state.saved)
     }
+
+    const removeFromLocal = () => {
+      this.state.saved.forEach((elem, index) => {
+        if (elem.isbn === isbn) {
+          this.setState({
+            index: index
+          })
+        }
+      })
+      this.setState({
+        title: "收藏",
+        saved: this.state.saved.splice(this.state.index, 1)
+      })
+      DeviceStorage.save('books', this.state.saved)
+    } 
 
     return (
       <View style={styles.container}>
@@ -103,14 +119,14 @@ export default class BookDetailScreen extends React.Component {
             <Text style={{color: 'white', fontSize: 13}}>定价: {this.state.book.price}</Text>
             <Text style={{color: 'white', fontSize: 13}}>ISBN: {this.state.book.isbn}</Text>
             {
-              fromPage === 'home' || this.state.title==="已收藏"
-              ? <Button title="已收藏" buttonStyle={{width: 80, height: 40,backgroundColor: 'white'}} titleStyle={{color: 'grey'}} onPress={() => console.log('hi')}></Button>
+              this.state.title==="已收藏"
+              ? <Button title="已收藏" buttonStyle={{width: 80, height: 40,backgroundColor: 'white'}} titleStyle={{color: 'grey'}} onPress={() => removeFromLocal()}></Button>
               : <Button title="收藏" buttonStyle={{backgroundColor: 'green', width: 80, height: 40}} onPress={() => storeToLocal()}></Button>
             }
           </View>
         </View>
         {
-          fromPage === 'home'
+          this.state.title==="已收藏"
           ? (<View style={{height: 80, flexDirection: 'row', alignItems:'center', justifyContent: 'center'}}>
               <Button title="设置阅读状态" onPress={() => console.log('1')} buttonStyle={styles.button}></Button>
               <Button title="设置借出状态" onPress={() => console.log('1')} buttonStyle={styles.button}></Button>
