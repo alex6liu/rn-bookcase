@@ -14,21 +14,7 @@ class HomeScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      resArr: [
-        {
-          cover:"https://img3.doubanio.com/view/subject/m/public/s3254244.jpg",
-          name:"嫌疑人X的献身",
-          author:"[日] 东野圭吾",
-          tags: [
-            "青春",
-            "草样年华",
-            "小说",
-            "孙睿",
-            "校园",
-          ],
-          isbn: "9787544241694",
-        },
-      ],
+      resArr: [],
     };
   }
 

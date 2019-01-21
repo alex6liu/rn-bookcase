@@ -45,6 +45,13 @@ export default class BookDetailScreen extends React.Component {
         this.setState({
           saved: res
         })
+        res.forEach(elem => {
+          if (elem.isbn === isbn) {
+            this.setState({
+              title: '已收藏'
+            })
+          }
+        })
       } else {
         this.setState({
           saved: []
