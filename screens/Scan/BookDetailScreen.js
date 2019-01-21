@@ -58,7 +58,8 @@ export default class BookDetailScreen extends React.Component {
     
     const storeToLocal = () => {
       this.setState({
-        saved: this.state.saved.push(this.state.book)
+        saved: this.state.saved.push(this.state.book),
+        title: "已收藏",
       })
       DeviceStorage.save('books', this.state.saved)
     }
@@ -95,9 +96,9 @@ export default class BookDetailScreen extends React.Component {
             <Text style={{color: 'white', fontSize: 13}}>定价: {this.state.book.price}</Text>
             <Text style={{color: 'white', fontSize: 13}}>ISBN: {this.state.book.isbn}</Text>
             {
-              fromPage === 'home'
+              fromPage === 'home' || this.state.title==="已收藏"
               ? <Button title="已收藏" buttonStyle={{width: 80, height: 40,backgroundColor: 'white'}} titleStyle={{color: 'grey'}} onPress={() => console.log('hi')}></Button>
-              : <Button title={this.state.title} buttonStyle={{backgroundColor: 'green', width: 80, height: 40}} onPress={() => storeToLocal()}></Button>
+              : <Button title="收藏" buttonStyle={{backgroundColor: 'green', width: 80, height: 40}} onPress={() => storeToLocal()}></Button>
             }
           </View>
         </View>
