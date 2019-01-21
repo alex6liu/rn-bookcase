@@ -10,7 +10,7 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    DeviceStorage.delete('books')
+    // DeviceStorage.delete('books')
   }
 
   render() {

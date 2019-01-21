@@ -97,14 +97,14 @@ export default class BookDetailScreen extends React.Component {
                 ? "ios-arrow-back"
                 : 'md-arrow-back'
               }
-              size={20}
+              size={30}
               color="white"
             />
           </TouchableHighlight>
           <Text>书籍详情</Text>
           <EvilIcons
             name="share-apple"
-            size={20}
+            size={30}
             color="white"
           />
         </View>
@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-around'
   },
   bookInfo: {
     height: 200,

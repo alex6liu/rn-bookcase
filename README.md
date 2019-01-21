@@ -13,6 +13,9 @@
 ## Scanner
 使用Expo自带的[BarCodeScanner](https://docs.expo.io/versions/latest/sdk/bar-code-scanner.md),
 
+## 侧滑删除
+`react-native-swipe-list-view`
+
 ## Storage
 - [x] AsyncStorage
 - [ ] Mongo Altas
