@@ -4,6 +4,7 @@ import {withNavigationFocus} from 'react-navigation';
 
 import Header from '../components/Header';
 import createDataList from '../utils/createDataList';
+import createBookList from '../utils/createBookList';
 import DeviceStorage from '../utils/DeviceStorage';
 
 class HomeScreen extends React.Component {
@@ -52,7 +53,8 @@ class HomeScreen extends React.Component {
           contentContainerStyle={styles.resultsContainer}
           showsVerticalScrollIndicator={true}
         >
-          {createDataList(this.state.resArr, this.props, 'home')}
+          {/* {createDataList(this.state.resArr, this.props, 'home')} */}
+          {createBookList(this.state.resArr)}
         </ScrollView>
       </View>
     );
