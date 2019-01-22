@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text } from 'react-native';
+import { ScrollView, StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 import { Icon } from "expo";
 import Header1 from '../components/Header1';
 import DeviceStorage from '../utils/DeviceStorage';
@@ -50,40 +50,55 @@ class AnalyzeScreen extends React.Component {
         </View>
 
         <View style={{flexDirection: 'row', justifyContent:'space-around'}}>
-          <View style={styles.singleCountContainer}>
-            <Icon.EvilIcons name="pencil" size={20}/>
-            <Text>最爱作者</Text>
-          </View>
-          <View style={styles.singleCountContainer}>
-            <Icon.EvilIcons name="navicon" size={20}/>
-            <Text>出版社</Text>
-          </View>
-          <View style={styles.singleCountContainer}>
-            <Icon.EvilIcons name="tag" size={20}/>
-            <Text>常用标签</Text>
-          </View>
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('favourite-author')}>
+            <View style={styles.singleCountContainer}>
+              <Icon.EvilIcons name="pencil" size={20}/>
+              <Text>最爱作者</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('publisher')}>
+            <View style={styles.singleCountContainer}>
+              <Icon.EvilIcons name="navicon" size={20}/>
+              <Text>出版社</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('tags')}>
+            <View style={styles.singleCountContainer}>
+              <Icon.EvilIcons name="tag" size={20}/>
+              <Text>常用标签</Text>
+            </View>
+          </TouchableHighlight>
         </View>
 
         <View style={{flexDirection: 'row', justifyContent:'space-around'}}>
-          <View style={styles.singleCountContainer}>
-            <Icon.EvilIcons name="chart" size={20}/>
-            <Text>书柜管理</Text>
-          </View>
-          <View style={styles.singleCountContainer}>
-            <Icon.MaterialCommunityIcons name="account-outline" size={20}/>
-            <Text>借出管理</Text>
-          </View>
-          <View style={styles.singleCountContainer}>
-            <Icon.MaterialCommunityIcons name="coffee-outline" size={20}/>
-            <Text>阅读进度</Text>
-          </View>
+          <TouchableHighlight> 
+            <View style={styles.singleCountContainer}>
+              <Icon.EvilIcons name="chart" size={20}/>
+              <Text>书柜管理</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight> 
+            <View style={styles.singleCountContainer}>
+              <Icon.MaterialCommunityIcons name="account-outline" size={20}/>
+              <Text>借出管理</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight> 
+            <View style={styles.singleCountContainer}>
+              <Icon.MaterialCommunityIcons name="coffee-outline" size={20}/>
+              <Text>阅读进度</Text>
+            </View>
+          </TouchableHighlight>
         </View>
 
         <View style={{flexDirection: 'row', justifyContent:'space-around'}}>
-          <View style={styles.singleCountContainer}>
-            <Icon.AntDesign name="shoppingcart" size={20}/>
-            <Text>购买渠道</Text>
-          </View>
+          <TouchableHighlight> 
+            <View style={styles.singleCountContainer}>
+              <Icon.AntDesign name="shoppingcart" size={20}/>
+              <Text>购买渠道</Text>
+            </View>
+          </TouchableHighlight>
+
           <View style={styles.invisible}>
             <Icon.AntDesign name="shoppingcart" size={20}/>
             <Text>购买渠道</Text>

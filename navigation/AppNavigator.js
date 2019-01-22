@@ -6,6 +6,9 @@ import SearchScreen from '../screens/Scan/SearchScreen';
 import CameraScreen from '../screens/Scan/CameraScreen';
 import ManuelAddScreen from '../screens/Scan/ManuelAddScreen';
 import BookDetailScreen from '../screens/Scan/BookDetailScreen';
+import FavouriteAuthor from '../screens/Analyze/FavouriteAuthor';
+import Publisher from '../screens/Analyze/Publisher';
+import Tags from '../screens/Analyze/Tags';
 
 export default createStackNavigator({
   // You could add another route here for authentication.
@@ -20,4 +23,7 @@ export default createStackNavigator({
   Camera: CameraScreen,
   ManuelAdd: ManuelAddScreen,
   BookDetail: BookDetailScreen,
+  'favourite-author': FavouriteAuthor,
+  "publisher": Publisher,
+  "tags": Tags,
 });
