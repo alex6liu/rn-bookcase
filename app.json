@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.alex.bookcase"
+    },
+    "android": {
+      "package": "com.alex.bookcase"
     }
   }
 }
