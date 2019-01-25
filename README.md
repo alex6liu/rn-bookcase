@@ -4,7 +4,7 @@
 
 通过豆瓣书籍的api的ISBN查询,获得书籍的所有信息. 并存储.
 
-开发时,先不要 `run eject`, 需要提供ios和android的bundler id(需要注册)
+开发时,先不要 `run eject`
 
 ## Install
 - `npm i`
@@ -19,6 +19,17 @@
 ## 颜色搭配
 http://www.divcss5.com/peise/
 
+## 打包
+### andriod
+`expo build andriod`
+
+### ios
+不是developer
+
+### 使用xcode安装到手机上(不用developer账号)
+参考[这里](https://www.jianshu.com/p/6d1ee919ded3), 先将文件打包成bundle,然后在xcode中绑定到项目
+还有[这里](https://blog.csdn.net/birthmarkqiqi/article/details/73650844)
+
 ## Storage
 - [x] AsyncStorage
 - [ ] Mongo Altas
@@ -28,7 +39,7 @@ http://www.divcss5.com/peise/
 - [ ] Home Page
   - [ ] 搜索
   - [ ] 批量操作
-  - [ ] 书架
+  - [x] 书架
 - [ ] Add books
   - [x] 搜索
     - [x] 收藏加入书架 
@@ -39,10 +50,10 @@ http://www.divcss5.com/peise/
       - [x] 功能3: 放弃
   - [ ] 手动加书
 - [ ] Analyze page
-  - [ ] 当前藏书
-  - [ ] 最爱作者
-  - [ ] 出版社
-  - [ ] 常用标签
+  - [x] 当前藏书
+  - [x] 最爱作者
+  - [x] 出版社
+  - [x] 常用标签
   - [ ] 书柜管理
   - [ ] 借出管理
   - [ ] 阅读进度
