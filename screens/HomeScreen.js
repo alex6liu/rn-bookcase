@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import createDataList from '../utils/createDataList';
 import createBookList from '../utils/createBookList';
 import DeviceStorage from '../utils/DeviceStorage';
+import I18n from '../language/language';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -20,7 +21,7 @@ class HomeScreen extends React.Component {
   }
 
   componentDidMount() {
-
+   
     DeviceStorage.get('books').then(res => {
       if (res) {
         this.setState({
@@ -48,7 +49,7 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View>
-        <Header title="我的藏书"/>
+        <Header title={I18n.t('home.title')}/>
         <ScrollView
           contentContainerStyle={styles.resultsContainer}
           showsVerticalScrollIndicator={true}

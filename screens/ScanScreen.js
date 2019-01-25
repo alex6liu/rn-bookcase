@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
-
+import I18n from '../language/language';
 import Header from '../components/Header';
 
 export default class ScanScreen extends React.Component {
@@ -20,11 +20,11 @@ export default class ScanScreen extends React.Component {
 
     return (
       <View style={styles.scanContainer}>
-        <Header title="扫码" />
+        <Header title={I18n.t('scan.scan')} />
         <View style={styles.operations}>
-          <Button title='扫码录入' onPress={() => this.props.navigation.navigate('Camera')}/>
-          <Button title='搜索书籍' onPress={() => this.props.navigation.navigate('Search')}/>
-          <Button title='手动录入' onPress={() => this.props.navigation.navigate('ManuelAdd')}/>
+          <Button title={I18n.t('scan.scanAdd')} onPress={() => this.props.navigation.navigate('Camera')}/>
+          <Button title={I18n.t('scan.search')} onPress={() => this.props.navigation.navigate('Search')}/>
+          <Button title={I18n.t('scan.manuelAdd')} onPress={() => this.props.navigation.navigate('ManuelAdd')}/>
         </View>
       </View>
     );

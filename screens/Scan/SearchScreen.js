@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TextInput, Image, ScrollView,TouchableHighlight
 import axios from 'axios';
 import bookApi from '../../api';
 import createDataList from '../../utils/createDataList';
+import I18n from '../../language/language';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {
@@ -40,8 +41,8 @@ export default class SearchScreen extends React.Component {
     return (
       <View style={styles.searchContainer}>
         <View style={styles.searchHeader}>
-          <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.goBack()}>取消</Text>
-          <Text style={styles.searchHeaderText}>搜索</Text>
+          <Text style={styles.searchHeaderText} onPress={() => this.props.navigation.goBack()}>{I18n.t('cancel')}</Text>
+          <Text style={styles.searchHeaderText}>{I18n.t('search')}</Text>
           <Text>{'  '}</Text>
         </View>
         <TextInput
