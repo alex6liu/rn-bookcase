@@ -19,6 +19,13 @@
 ## 颜色搭配
 http://www.divcss5.com/peise/
 
+## 切换语言
+`react-native-i18n`
+
+`react-native-device-info` 用户获取系统本地语言环境
+
+[参考](https://www.jianshu.com/p/4dc5612854eb)
+
 ## 打包
 ### andriod
 `expo build andriod`
@@ -28,6 +35,7 @@ http://www.divcss5.com/peise/
 
 ### 使用xcode安装到手机上(不用developer账号)
 参考[这里](https://www.jianshu.com/p/6d1ee919ded3), 先将文件打包成bundle,然后在xcode中绑定到项目
+
 还有[这里](https://blog.csdn.net/birthmarkqiqi/article/details/73650844)
 
 ## Storage
