@@ -54,7 +54,7 @@ class HomeScreen extends React.Component {
           showsVerticalScrollIndicator={true}
         >
           {/* {createDataList(this.state.resArr, this.props, 'home')} */}
-          {createBookList(this.state.resArr)}
+          {createBookList(this.state.resArr, this.props)}
         </ScrollView>
       </View>
     );
